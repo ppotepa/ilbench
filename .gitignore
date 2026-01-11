@@ -1,0 +1,11 @@
+## Ignore hidden instruction files
+*.hidden.md
+
+## Standard .NET ignores
+bin/
+obj/
+*.user
+*.suo
+*.sln.docstates
+.vs/
+.vscode/
