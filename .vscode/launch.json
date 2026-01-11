@@ -1,0 +1,27 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug Demo",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "DEBUG",
+            "program": "${workspaceFolder}/src/demo/bin/Debug/net8.0/ILBench.Demo.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/src/demo",
+            "stopAtEntry": false,
+            "console": "internalConsole"
+        },
+        {
+            "name": "Debug Demo (Console)",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "DEBUG",
+            "program": "${workspaceFolder}/src/demo/bin/Debug/net8.0/ILBench.Demo.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/src/demo",
+            "stopAtEntry": false,
+            "console": "externalTerminal"
+        }
+    ]
+}
