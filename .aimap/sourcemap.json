@@ -1,0 +1,825 @@
+{
+  "version": "2.1",
+  "generatedAt": "2026-01-11T00:00:00Z",
+  "solution": {
+    "name": "ilbench",
+    "languages": ["csharp"],
+    "rootPath": "src",
+    "totalFiles": 6,
+    "totalSymbols": 17
+  },
+  "semantic": {
+    "domains": [
+      {
+        "id": "assembly_discovery",
+        "name": "Assembly Discovery",
+        "description": "Core domain for discovering and analyzing .NET assemblies",
+        "rules": [
+          "Assemblies must be valid .NET DLLs",
+          "Exclude patterns prevent scanning of system assemblies",
+          "Scan paths must exist on filesystem",
+          "Assembly metadata is extracted at discovery time"
+        ]
+      },
+      {
+        "id": "engine_orchestration",
+        "name": "Engine Orchestration",
+        "description": "Orchestrates benchmark engine configuration and lifecycle",
+        "rules": [
+          "Builder pattern ensures valid configuration",
+          "At least one assembly path must be configured",
+          "Engine is immutable after building",
+          "Configuration cannot be modified after engine creation"
+        ]
+      }
+    ],
+    "nodes": [
+      {
+        "id": "csharp:ILBench.Configuration",
+        "kind": "type",
+        "name": "Configuration",
+        "definedIn": "src/lib/Configuration.cs:6:17",
+        "language": "csharp",
+        "meta": {
+          "domain": "engine_orchestration",
+          "layer": "domain",
+          "visibility": "public",
+          "sideEffects": ["none"],
+          "risk": "low",
+          "status": "added"
+        }
+      },
+      {
+        "id": "csharp:ILBench.Configuration.AssemblyPaths",
+        "kind": "variable",
+        "name": "AssemblyPaths",
+        "definedIn": "src/lib/Configuration.cs:8:8",
+        "language": "csharp",
+        "meta": {
+          "domain": "engine_orchestration",
+          "layer": "domain",
+          "visibility": "public",
+          "sideEffects": ["none"],
+          "risk": "low",
+          "status": "added"
+        }
+      },
+      {
+        "id": "csharp:ILBench.Configuration.ExcludePatterns",
+        "kind": "variable",
+        "name": "ExcludePatterns",
+        "definedIn": "src/lib/Configuration.cs:9:9",
+        "language": "csharp",
+        "meta": {
+          "domain": "engine_orchestration",
+          "layer": "domain",
+          "visibility": "public",
+          "sideEffects": ["none"],
+          "risk": "low",
+          "status": "added"
+        }
+      },
+      {
+        "id": "csharp:ILBench.Configuration.ctor",
+        "kind": "callable",
+        "name": "Configuration()",
+        "definedIn": "src/lib/Configuration.cs:11:15",
+        "language": "csharp",
+        "meta": {
+          "domain": "engine_orchestration",
+          "layer": "domain",
+          "visibility": "public",
+          "sideEffects": ["none"],
+          "risk": "low",
+          "status": "added"
+        }
+      },
+      {
+        "id": "csharp:ILBench.Models.AssemblyInfo",
+        "kind": "type",
+        "name": "AssemblyInfo",
+        "definedIn": "src/lib/Models/AssemblyInfo.cs:5:24",
+        "language": "csharp",
+        "meta": {
+          "domain": "assembly_discovery",
+          "layer": "domain",
+          "visibility": "public",
+          "sideEffects": ["none"],
+          "risk": "low",
+          "status": "added"
+        }
+      },
+      {
+        "id": "csharp:ILBench.Models.AssemblyInfo.Name",
+        "kind": "variable",
+        "name": "Name",
+        "definedIn": "src/lib/Models/AssemblyInfo.cs:7:7",
+        "language": "csharp",
+        "meta": {
+          "domain": "assembly_discovery",
+          "layer": "domain",
+          "visibility": "public",
+          "sideEffects": ["none"],
+          "risk": "low",
+          "status": "added"
+        }
+      },
+      {
+        "id": "csharp:ILBench.Models.AssemblyInfo.Path",
+        "kind": "variable",
+        "name": "Path",
+        "definedIn": "src/lib/Models/AssemblyInfo.cs:8:8",
+        "language": "csharp",
+        "meta": {
+          "domain": "assembly_discovery",
+          "layer": "domain",
+          "visibility": "public",
+          "sideEffects": ["none"],
+          "risk": "low",
+          "status": "added"
+        }
+      },
+      {
+        "id": "csharp:ILBench.Models.AssemblyInfo.Version",
+        "kind": "variable",
+        "name": "Version",
+        "definedIn": "src/lib/Models/AssemblyInfo.cs:9:9",
+        "language": "csharp",
+        "meta": {
+          "domain": "assembly_discovery",
+          "layer": "domain",
+          "visibility": "public",
+          "sideEffects": ["none"],
+          "risk": "low",
+          "status": "added"
+        }
+      },
+      {
+        "id": "csharp:ILBench.Models.AssemblyInfo.ctor",
+        "kind": "callable",
+        "name": "AssemblyInfo(string, string, Version)",
+        "definedIn": "src/lib/Models/AssemblyInfo.cs:11:16",
+        "language": "csharp",
+        "meta": {
+          "domain": "assembly_discovery",
+          "layer": "domain",
+          "visibility": "public",
+          "sideEffects": ["none"],
+          "risk": "low",
+          "status": "added"
+        }
+      },
+      {
+        "id": "csharp:ILBench.Models.AssemblyInfo.ToString",
+        "kind": "callable",
+        "name": "ToString()",
+        "definedIn": "src/lib/Models/AssemblyInfo.cs:18:21",
+        "language": "csharp",
+        "meta": {
+          "domain": "assembly_discovery",
+          "layer": "domain",
+          "visibility": "public",
+          "sideEffects": ["none"],
+          "risk": "low",
+          "status": "added"
+        }
+      },
+      {
+        "id": "csharp:ILBench.Discovery.AssemblyScanner",
+        "kind": "type",
+        "name": "AssemblyScanner",
+        "definedIn": "src/lib/Discovery/AssemblyScanner.cs:9:10",
+        "language": "csharp",
+        "meta": {
+          "domain": "assembly_discovery",
+          "layer": "application",
+          "visibility": "public",
+          "sideEffects": ["filesystem"],
+          "risk": "medium",
+          "status": "added"
+        }
+      },
+      {
+        "id": "csharp:ILBench.Discovery.AssemblyScanner.ctor",
+        "kind": "callable",
+        "name": "AssemblyScanner(Configuration)",
+        "definedIn": "src/lib/Discovery/AssemblyScanner.cs:13:16",
+        "language": "csharp",
+        "meta": {
+          "domain": "assembly_discovery",
+          "layer": "application",
+          "visibility": "public",
+          "sideEffects": ["none"],
+          "risk": "low",
+          "status": "added"
+        }
+      },
+      {
+        "id": "csharp:ILBench.Discovery.AssemblyScanner.ScanForAssemblies",
+        "kind": "callable",
+        "name": "ScanForAssemblies()",
+        "definedIn": "src/lib/Discovery/AssemblyScanner.cs:18:48",
+        "language": "csharp",
+        "meta": {
+          "domain": "assembly_discovery",
+          "layer": "application",
+          "visibility": "public",
+          "sideEffects": ["filesystem"],
+          "risk": "medium",
+          "status": "added"
+        }
+      },
+      {
+        "id": "csharp:ILBench.Discovery.AssemblyScanner.ShouldExclude",
+        "kind": "callable",
+        "name": "ShouldExclude(string)",
+        "definedIn": "src/lib/Discovery/AssemblyScanner.cs:51:54",
+        "language": "csharp",
+        "meta": {
+          "domain": "assembly_discovery",
+          "layer": "application",
+          "visibility": "private",
+          "sideEffects": ["none"],
+          "risk": "low",
+          "status": "added"
+        }
+      },
+      {
+        "id": "csharp:ILBench.Engine.BenchmarkEngine",
+        "kind": "type",
+        "name": "BenchmarkEngine",
+        "definedIn": "src/lib/Engine/BenchmarkEngine.cs:5:6",
+        "language": "csharp",
+        "meta": {
+          "domain": "engine_orchestration",
+          "layer": "application",
+          "visibility": "public",
+          "sideEffects": ["filesystem"],
+          "risk": "medium",
+          "status": "added"
+        }
+      },
+      {
+        "id": "csharp:ILBench.Engine.BenchmarkEngine.ctor",
+        "kind": "callable",
+        "name": "BenchmarkEngine(Configuration)",
+        "definedIn": "src/lib/Engine/BenchmarkEngine.cs:10:14",
+        "language": "csharp",
+        "meta": {
+          "domain": "engine_orchestration",
+          "layer": "application",
+          "visibility": "public",
+          "sideEffects": ["none"],
+          "risk": "low",
+          "status": "added"
+        }
+      },
+      {
+        "id": "csharp:ILBench.Engine.BenchmarkEngine.DiscoverAssemblies",
+        "kind": "callable",
+        "name": "DiscoverAssemblies()",
+        "definedIn": "src/lib/Engine/BenchmarkEngine.cs:16:19",
+        "language": "csharp",
+        "meta": {
+          "domain": "engine_orchestration",
+          "layer": "application",
+          "visibility": "public",
+          "sideEffects": ["filesystem"],
+          "risk": "medium",
+          "status": "added"
+        }
+      },
+      {
+        "id": "csharp:ILBench.BenchmarkEngineBuilder",
+        "kind": "type",
+        "name": "BenchmarkEngineBuilder",
+        "definedIn": "src/lib/Engine/BenchmarkEngineBuilder.cs:5:6",
+        "language": "csharp",
+        "meta": {
+          "domain": "engine_orchestration",
+          "layer": "application",
+          "visibility": "public",
+          "sideEffects": ["none"],
+          "risk": "low",
+          "status": "added"
+        }
+      },
+      {
+        "id": "csharp:ILBench.BenchmarkEngineBuilder.ctor",
+        "kind": "callable",
+        "name": "BenchmarkEngineBuilder()",
+        "definedIn": "src/lib/Engine/BenchmarkEngineBuilder.cs:9:12",
+        "language": "csharp",
+        "meta": {
+          "domain": "engine_orchestration",
+          "layer": "application",
+          "visibility": "public",
+          "sideEffects": ["none"],
+          "risk": "low",
+          "status": "added"
+        }
+      },
+      {
+        "id": "csharp:ILBench.BenchmarkEngineBuilder.AddAssemblyPath",
+        "kind": "callable",
+        "name": "AddAssemblyPath(string)",
+        "definedIn": "src/lib/Engine/BenchmarkEngineBuilder.cs:14:17",
+        "language": "csharp",
+        "meta": {
+          "domain": "engine_orchestration",
+          "layer": "application",
+          "visibility": "public",
+          "sideEffects": ["none"],
+          "risk": "low",
+          "status": "added"
+        }
+      },
+      {
+        "id": "csharp:ILBench.BenchmarkEngineBuilder.AddExcludePattern",
+        "kind": "callable",
+        "name": "AddExcludePattern(string)",
+        "definedIn": "src/lib/Engine/BenchmarkEngineBuilder.cs:20:23",
+        "language": "csharp",
+        "meta": {
+          "domain": "engine_orchestration",
+          "layer": "application",
+          "visibility": "public",
+          "sideEffects": ["none"],
+          "risk": "low",
+          "status": "added"
+        }
+      },
+      {
+        "id": "csharp:ILBench.BenchmarkEngineBuilder.Build",
+        "kind": "callable",
+        "name": "Build()",
+        "definedIn": "src/lib/Engine/BenchmarkEngineBuilder.cs:25:32",
+        "language": "csharp",
+        "meta": {
+          "domain": "engine_orchestration",
+          "layer": "application",
+          "visibility": "public",
+          "sideEffects": ["none"],
+          "risk": "medium",
+          "status": "added"
+        }
+      },
+      {
+        "id": "csharp:ILBench.Demo.Program",
+        "kind": "type",
+        "name": "Program",
+        "definedIn": "src/demo/Program.cs:6:7",
+        "language": "csharp",
+        "meta": {
+          "domain": "assembly_discovery",
+          "layer": "presentation",
+          "visibility": "internal",
+          "sideEffects": ["filesystem"],
+          "risk": "low",
+          "status": "added"
+        }
+      },
+      {
+        "id": "csharp:ILBench.Demo.Program.Main",
+        "kind": "callable",
+        "name": "Main(string[])",
+        "definedIn": "src/demo/Program.cs:8:43",
+        "language": "csharp",
+        "meta": {
+          "domain": "assembly_discovery",
+          "layer": "presentation",
+          "visibility": "private",
+          "sideEffects": ["filesystem"],
+          "risk": "low",
+          "status": "added"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "from": "csharp:ILBench.Engine.BenchmarkEngine.ctor",
+        "to": "csharp:ILBench.Configuration",
+        "type": "depends_on",
+        "contract": {
+          "inputs": [
+            {"name": "config", "type": "Configuration", "required": true}
+          ],
+          "outputs": [],
+          "exceptions": []
+        }
+      },
+      {
+        "from": "csharp:ILBench.Engine.BenchmarkEngine.ctor",
+        "to": "csharp:ILBench.Discovery.AssemblyScanner.ctor",
+        "type": "calls",
+        "contract": {
+          "inputs": [
+            {"name": "config", "type": "Configuration", "required": true}
+          ],
+          "outputs": [],
+          "exceptions": []
+        }
+      },
+      {
+        "from": "csharp:ILBench.Engine.BenchmarkEngine.DiscoverAssemblies",
+        "to": "csharp:ILBench.Discovery.AssemblyScanner.ScanForAssemblies",
+        "type": "calls",
+        "contract": {
+          "inputs": [],
+          "outputs": [
+            {"name": "return", "type": "List<AssemblyInfo>"}
+          ],
+          "exceptions": []
+        }
+      },
+      {
+        "from": "csharp:ILBench.Discovery.AssemblyScanner.ScanForAssemblies",
+        "to": "csharp:ILBench.Models.AssemblyInfo.ctor",
+        "type": "calls",
+        "contract": {
+          "inputs": [
+            {"name": "name", "type": "string", "required": true},
+            {"name": "path", "type": "string", "required": true},
+            {"name": "version", "type": "Version", "required": true}
+          ],
+          "outputs": [],
+          "exceptions": []
+        }
+      },
+      {
+        "from": "csharp:ILBench.Discovery.AssemblyScanner.ScanForAssemblies",
+        "to": "csharp:ILBench.Discovery.AssemblyScanner.ShouldExclude",
+        "type": "calls",
+        "contract": {
+          "inputs": [
+            {"name": "filePath", "type": "string", "required": true}
+          ],
+          "outputs": [
+            {"name": "return", "type": "bool"}
+          ],
+          "exceptions": []
+        }
+      },
+      {
+        "from": "csharp:ILBench.BenchmarkEngineBuilder.ctor",
+        "to": "csharp:ILBench.Configuration.ctor",
+        "type": "calls",
+        "contract": {
+          "inputs": [],
+          "outputs": [],
+          "exceptions": []
+        }
+      },
+      {
+        "from": "csharp:ILBench.BenchmarkEngineBuilder.AddAssemblyPath",
+        "to": "csharp:ILBench.Configuration.AssemblyPaths",
+        "type": "writes",
+        "contract": {
+          "inputs": [
+            {"name": "path", "type": "string", "required": true}
+          ],
+          "outputs": [
+            {"name": "return", "type": "BenchmarkEngineBuilder"}
+          ],
+          "exceptions": []
+        }
+      },
+      {
+        "from": "csharp:ILBench.BenchmarkEngineBuilder.AddExcludePattern",
+        "to": "csharp:ILBench.Configuration.ExcludePatterns",
+        "type": "writes",
+        "contract": {
+          "inputs": [
+            {"name": "pattern", "type": "string", "required": true}
+          ],
+          "outputs": [
+            {"name": "return", "type": "BenchmarkEngineBuilder"}
+          ],
+          "exceptions": []
+        }
+      },
+      {
+        "from": "csharp:ILBench.BenchmarkEngineBuilder.Build",
+        "to": "csharp:ILBench.Engine.BenchmarkEngine.ctor",
+        "type": "calls",
+        "contract": {
+          "inputs": [],
+          "outputs": [
+            {"name": "return", "type": "BenchmarkEngine"}
+          ],
+          "exceptions": [
+            {"type": "InvalidOperationException", "condition": "No assembly paths configured"}
+          ]
+        }
+      },
+      {
+        "from": "csharp:ILBench.Demo.Program.Main",
+        "to": "csharp:ILBench.BenchmarkEngineBuilder.ctor",
+        "type": "calls",
+        "contract": {
+          "inputs": [],
+          "outputs": [],
+          "exceptions": []
+        }
+      },
+      {
+        "from": "csharp:ILBench.Demo.Program.Main",
+        "to": "csharp:ILBench.BenchmarkEngineBuilder.AddAssemblyPath",
+        "type": "calls",
+        "contract": {
+          "inputs": [
+            {"name": "path", "type": "string", "required": true}
+          ],
+          "outputs": [
+            {"name": "return", "type": "BenchmarkEngineBuilder"}
+          ],
+          "exceptions": []
+        }
+      },
+      {
+        "from": "csharp:ILBench.Demo.Program.Main",
+        "to": "csharp:ILBench.BenchmarkEngineBuilder.AddExcludePattern",
+        "type": "calls",
+        "contract": {
+          "inputs": [
+            {"name": "pattern", "type": "string", "required": true}
+          ],
+          "outputs": [
+            {"name": "return", "type": "BenchmarkEngineBuilder"}
+          ],
+          "exceptions": []
+        }
+      },
+      {
+        "from": "csharp:ILBench.Demo.Program.Main",
+        "to": "csharp:ILBench.BenchmarkEngineBuilder.Build",
+        "type": "calls",
+        "contract": {
+          "inputs": [],
+          "outputs": [
+            {"name": "return", "type": "BenchmarkEngine"}
+          ],
+          "exceptions": [
+            {"type": "InvalidOperationException", "condition": "No assembly paths configured"}
+          ]
+        }
+      },
+      {
+        "from": "csharp:ILBench.Demo.Program.Main",
+        "to": "csharp:ILBench.Engine.BenchmarkEngine.DiscoverAssemblies",
+        "type": "calls",
+        "contract": {
+          "inputs": [],
+          "outputs": [
+            {"name": "return", "type": "List<AssemblyInfo>"}
+          ],
+          "exceptions": []
+        }
+      }
+    ]
+  },
+  "codemap": {
+    "files": [
+      {
+        "path": "src/lib/Configuration.cs",
+        "language": "csharp",
+        "size": 341,
+        "checksum": "config_v1",
+        "lastModified": "2026-01-11T00:00:00Z",
+        "symbols": [
+          {
+            "id": "csharp:ILBench.Configuration",
+            "name": "Configuration",
+            "kind": "type",
+            "line": 6,
+            "description": "Holds assembly scan paths and exclusion patterns for discovery"
+          },
+          {
+            "id": "csharp:ILBench.Configuration.AssemblyPaths",
+            "name": "AssemblyPaths",
+            "kind": "variable",
+            "line": 8,
+            "description": "Collection of directories to scan for assemblies"
+          },
+          {
+            "id": "csharp:ILBench.Configuration.ExcludePatterns",
+            "name": "ExcludePatterns",
+            "kind": "variable",
+            "line": 9,
+            "description": "Collection of patterns to exclude from scanning"
+          },
+          {
+            "id": "csharp:ILBench.Configuration.ctor",
+            "name": "Configuration()",
+            "kind": "callable",
+            "line": 11,
+            "description": "Initializes configuration with empty path and pattern lists"
+          }
+        ],
+        "imports": ["System", "System.Collections.Generic"],
+        "exports": ["Configuration"],
+        "dependencies": []
+      },
+      {
+        "path": "src/lib/Models/AssemblyInfo.cs",
+        "language": "csharp",
+        "size": 395,
+        "checksum": "assemblyinfo_v1",
+        "lastModified": "2026-01-11T00:00:00Z",
+        "symbols": [
+          {
+            "id": "csharp:ILBench.Models.AssemblyInfo",
+            "name": "AssemblyInfo",
+            "kind": "type",
+            "line": 5,
+            "description": "Represents a discovered .NET assembly with metadata"
+          },
+          {
+            "id": "csharp:ILBench.Models.AssemblyInfo.Name",
+            "name": "Name",
+            "kind": "variable",
+            "line": 7,
+            "description": "Assembly name extracted from metadata"
+          },
+          {
+            "id": "csharp:ILBench.Models.AssemblyInfo.Path",
+            "name": "Path",
+            "kind": "variable",
+            "line": 8,
+            "description": "File system path to the assembly DLL"
+          },
+          {
+            "id": "csharp:ILBench.Models.AssemblyInfo.Version",
+            "name": "Version",
+            "kind": "variable",
+            "line": 9,
+            "description": "Assembly version from metadata"
+          },
+          {
+            "id": "csharp:ILBench.Models.AssemblyInfo.ctor",
+            "name": "AssemblyInfo(string, string, Version)",
+            "kind": "callable",
+            "line": 11,
+            "description": "Constructs assembly info with name, path, and version"
+          },
+          {
+            "id": "csharp:ILBench.Models.AssemblyInfo.ToString",
+            "name": "ToString()",
+            "kind": "callable",
+            "line": 18,
+            "description": "Returns formatted assembly string with name, version, and path"
+          }
+        ],
+        "imports": ["System"],
+        "exports": ["AssemblyInfo"],
+        "dependencies": []
+      },
+      {
+        "path": "src/lib/Discovery/AssemblyScanner.cs",
+        "language": "csharp",
+        "size": 1526,
+        "checksum": "scanner_v1",
+        "lastModified": "2026-01-11T00:00:00Z",
+        "symbols": [
+          {
+            "id": "csharp:ILBench.Discovery.AssemblyScanner",
+            "name": "AssemblyScanner",
+            "kind": "type",
+            "line": 9,
+            "description": "Scans file system for .NET assemblies with filtering"
+          },
+          {
+            "id": "csharp:ILBench.Discovery.AssemblyScanner.ctor",
+            "name": "AssemblyScanner(Configuration)",
+            "kind": "callable",
+            "line": 13,
+            "description": "Initializes scanner with discovery configuration"
+          },
+          {
+            "id": "csharp:ILBench.Discovery.AssemblyScanner.ScanForAssemblies",
+            "name": "ScanForAssemblies()",
+            "kind": "callable",
+            "line": 18,
+            "description": "Recursively finds DLLs in paths, filters by patterns, returns metadata"
+          },
+          {
+            "id": "csharp:ILBench.Discovery.AssemblyScanner.ShouldExclude",
+            "name": "ShouldExclude(string)",
+            "kind": "callable",
+            "line": 51,
+            "description": "Checks if file path matches any exclusion pattern"
+          }
+        ],
+        "imports": ["System", "System.Collections.Generic", "System.IO", "System.Linq", "System.Reflection", "ILBench.Models"],
+        "exports": ["AssemblyScanner"],
+        "dependencies": ["Configuration.cs", "Models/AssemblyInfo.cs"]
+      },
+      {
+        "path": "src/lib/Engine/BenchmarkEngine.cs",
+        "language": "csharp",
+        "size": 453,
+        "checksum": "engine_v1",
+        "lastModified": "2026-01-11T00:00:00Z",
+        "symbols": [
+          {
+            "id": "csharp:ILBench.Engine.BenchmarkEngine",
+            "name": "BenchmarkEngine",
+            "kind": "type",
+            "line": 5,
+            "description": "Orchestrates assembly discovery and benchmarking operations"
+          },
+          {
+            "id": "csharp:ILBench.Engine.BenchmarkEngine.ctor",
+            "name": "BenchmarkEngine(Configuration)",
+            "kind": "callable",
+            "line": 10,
+            "description": "Initializes engine with configuration and creates scanner"
+          },
+          {
+            "id": "csharp:ILBench.Engine.BenchmarkEngine.DiscoverAssemblies",
+            "name": "DiscoverAssemblies()",
+            "kind": "callable",
+            "line": 16,
+            "description": "Discovers all available assemblies using scanner"
+          }
+        ],
+        "imports": ["System.Collections.Generic", "ILBench.Discovery"],
+        "exports": ["BenchmarkEngine"],
+        "dependencies": ["Configuration.cs", "Discovery/AssemblyScanner.cs"]
+      },
+      {
+        "path": "src/lib/Engine/BenchmarkEngineBuilder.cs",
+        "language": "csharp",
+        "size": 684,
+        "checksum": "builder_v1",
+        "lastModified": "2026-01-11T00:00:00Z",
+        "symbols": [
+          {
+            "id": "csharp:ILBench.BenchmarkEngineBuilder",
+            "name": "BenchmarkEngineBuilder",
+            "kind": "type",
+            "line": 5,
+            "description": "Fluent builder for configuring BenchmarkEngine instances"
+          },
+          {
+            "id": "csharp:ILBench.BenchmarkEngineBuilder.ctor",
+            "name": "BenchmarkEngineBuilder()",
+            "kind": "callable",
+            "line": 9,
+            "description": "Creates builder with new empty configuration"
+          },
+          {
+            "id": "csharp:ILBench.BenchmarkEngineBuilder.AddAssemblyPath",
+            "name": "AddAssemblyPath(string)",
+            "kind": "callable",
+            "line": 14,
+            "description": "Adds directory path to scan, returns builder for chaining"
+          },
+          {
+            "id": "csharp:ILBench.BenchmarkEngineBuilder.AddExcludePattern",
+            "name": "AddExcludePattern(string)",
+            "kind": "callable",
+            "line": 20,
+            "description": "Adds exclusion pattern, returns builder for chaining"
+          },
+          {
+            "id": "csharp:ILBench.BenchmarkEngineBuilder.Build",
+            "name": "Build()",
+            "kind": "callable",
+            "line": 25,
+            "description": "Validates config and creates configured BenchmarkEngine instance"
+          }
+        ],
+        "imports": ["System", "ILBench.Engine"],
+        "exports": ["BenchmarkEngineBuilder"],
+        "dependencies": ["Configuration.cs", "Engine/BenchmarkEngine.cs"]
+      },
+      {
+        "path": "src/demo/Program.cs",
+        "language": "csharp",
+        "size": 931,
+        "checksum": "program_v1",
+        "lastModified": "2026-01-11T00:00:00Z",
+        "symbols": [
+          {
+            "id": "csharp:ILBench.Demo.Program",
+            "name": "Program",
+            "kind": "type",
+            "line": 6,
+            "description": "Console application entry point for ILBench assembly discovery demo"
+          },
+          {
+            "id": "csharp:ILBench.Demo.Program.Main",
+            "name": "Main(string[])",
+            "kind": "callable",
+            "line": 8,
+            "description": "Discovers and displays all assemblies in current application directory"
+          }
+        ],
+        "imports": ["System", "ILBench", "ILBench.Engine"],
+        "exports": ["Program"],
+        "dependencies": ["../lib/Engine/BenchmarkEngineBuilder.cs", "../lib/Engine/BenchmarkEngine.cs"]
+      }
+    ]
+  }
+}

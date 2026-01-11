@@ -9,6 +9,6 @@ obj/
 *.sln.docstates
 .vs/
 
-## Keep README.md
-!README.md
-
+## Keep .aimap sourcemap
+!.aimap/
+!.aimap/sourcemap.json
