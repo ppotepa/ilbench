@@ -35,6 +35,8 @@ namespace ILBench.Demo
             {
                 Console.WriteLine($"Error: {ex.Message}");
             }
+
+            Console.ReadLine();
         }
     }
 }
