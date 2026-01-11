@@ -1,3 +1,5 @@
+using System;
+
 namespace ILBench.Models
 {
     public class AssemblyInfo

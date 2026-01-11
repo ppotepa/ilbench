@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using ILBench.Discovery;
 
 namespace ILBench.Engine
