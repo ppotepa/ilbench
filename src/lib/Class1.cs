@@ -1,5 +1,6 @@
-namespace ILBench;
-
-public class Class1
+namespace ILBench
 {
+    public class Class1
+    {
+    }
 }

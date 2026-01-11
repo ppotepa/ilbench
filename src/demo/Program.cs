@@ -1,3 +1,12 @@
 using ILBench;
 
-Console.WriteLine("ILBench Demo");
+namespace ILBench.Demo
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("ILBench Demo");
+        }
+    }
+}
